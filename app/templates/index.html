@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Email Classifier</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='favicon.svg') }}">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-envelope-open-text"></i>
+                <h1>Smart Email Classifier</h1>
+            </div>
+            <p class="subtitle">Classificação inteligente de emails com respostas automáticas</p>
+        </header>
+
+        <div class="main-content">
+            <div class="upload-section">
+                <div class="upload-tabs">
+                    <button class="tab-btn active" data-tab="file">
+                        <i class="fas fa-file-upload"></i>
+                        Upload de Arquivo
+                    </button>
+                    <button class="tab-btn" data-tab="text">
+                        <i class="fas fa-edit"></i>
+                        Inserir Texto
+                    </button>
+                </div>
+
+                <form id="emailForm" enctype="multipart/form-data">
+                    <div class="tab-content active" id="file-tab">
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3>Arraste e solte seu arquivo aqui</h3>
+                            <p>ou clique para selecionar</p>
+                            <input type="file" id="fileInput" name="file" accept=".txt,.pdf" hidden>
+                            <div class="file-types">
+                                <span>Formatos suportados: .txt, .pdf</span>
+                            </div>
+                        </div>
+                        <div class="file-info" id="fileInfo" style="display: none;">
+                            <div class="file-details">
+                                <i class="fas fa-file-alt"></i>
+                                <span id="fileName"></span>
+                                <button type="button" id="removeFile" class="remove-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="text-tab">
+                        <div class="text-input-area">
+                            <label for="emailText">
+                                <i class="fas fa-pen"></i>
+                                Cole ou digite o conteúdo do email:
+                            </label>
+                            <textarea id="emailText" name="email_text" placeholder="Digite ou cole o conteúdo do email aqui..."></textarea>
+                            <div class="char-counter">
+                                <span id="charCount">0</span> caracteres
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="classify-btn" id="classifyBtn">
+                        <i class="fas fa-magic"></i>
+                        Classificar Email
+                    </button>
+                </form>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2><i class="fas fa-chart-line"></i> Resultados da Classificação</h2>
+                </div>
+
+                <div class="results-grid">
+                    <div class="result-card classification-card">
+                        <div class="card-header">
+                            <i class="fas fa-tags"></i>
+                            <h3>Classificação</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="classification-result" id="classificationResult">
+                                <span class="classification-badge" id="classificationBadge"></span>
+                            </div>
+                            <p class="classification-description" id="classificationDescription"></p>
+                        </div>
+                    </div>
+
+                    <div class="result-card response-card">
+                        <div class="card-header">
+                            <i class="fas fa-reply"></i>
+                            <h3>Resposta Sugerida</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="response-text" id="responseText"></div>
+                            <button class="copy-btn" id="copyResponseBtn">
+                                <i class="fas fa-copy"></i>
+                                Copiar Resposta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="original-text-section">
+                    <div class="collapsible-header" id="originalTextHeader">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Visualizar texto original</span>
+                    </div>
+                    <div class="original-text-content" id="originalTextContent">
+                        <pre id="originalText"></pre>
+                    </div>
+                </div>
+
+                <button class="new-analysis-btn" id="newAnalysisBtn">
+                    <i class="fas fa-plus"></i>
+                    Nova Análise
+                </button>
+            </div>
+        </div>
+
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner"></div>
+            <p>Processando email...</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Smart Email Classifier - Powered by AI</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
