@@ -176,7 +176,7 @@ smart_email_classifier/
 
 ## Demonstração
 
-- **Aplicação online**: [Link da aplicação deployada]
+- **Aplicação online**: [[Link da aplicação deployada]](https://smart-email-classifier-klm6.onrender.com/)
 
 ## Contribuição
 
