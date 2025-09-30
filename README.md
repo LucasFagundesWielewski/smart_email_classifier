@@ -47,7 +47,6 @@ Automatizar a leitura e classificação de emails em uma grande empresa do setor
 
 1. **Clone o repositório**
    ```bash
-   git clone <seu-repositorio>
    cd smart_email_classifier
    ```
 
