@@ -155,7 +155,7 @@ smart_email_classifier/
 ├── exemplos/
 │   └── emails_teste.md      # Casos de teste para validação
 ├── uploads/                 # Diretório de arquivos temporários
-└── Lib/                    # Ambiente virtual Python
+└── Scripts/
 ```
 
 ## Configurações
